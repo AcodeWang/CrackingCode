@@ -1,10 +1,13 @@
 # O(n)
 # Consider whitespace, case sensitive
 
-import unittest
-
 # in Python collections Counter dose the job
+
+
+import unittest
 from collections import Counter
+
+
 
 def checkPermutation(s1, s2):
     if len(s1) != len(s2):
@@ -31,7 +34,7 @@ def checkPermutation(s1, s2):
     # We can exit the checking in 2nd for loop
     for c in s2 :
         val_set[ord(c)] -= 1
-        if(val_set[ord(c)] < 0):
+        if val_set[ord(c)] < 0:
             return False
     #
     # for val in val_set :
@@ -60,6 +63,7 @@ class Test(unittest.TestCase):
 
             result = checkPermutation(*test_string)
             self.assertFalse(result)
+
 
 if __name__ == "__main__":
     unittest.main()

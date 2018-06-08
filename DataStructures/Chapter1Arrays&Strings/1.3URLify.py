@@ -7,6 +7,19 @@
 import unittest
 
 
+def urlify1(string, length):
+    new_index = len(string)
+
+    for i in reversed(range(length)):
+        if string[i] == ' ':
+            string[new_index - 3 : new_index] = "%20"
+            new_index -= 3
+        else:
+            string[new_index - 1] = string[i]
+            new_index -= 1
+    return string
+
+
 def urlify(str, trueLength):
 
     spaceCount = 0
@@ -40,7 +53,8 @@ class Test(unittest.TestCase):
 
     def test_urlify(self):
         for [test_string, length, expected] in self.data:
-            actual = urlify(test_string, length)
+            actual = urlify1(test_string, length)
+            # actual = urlify(test_string, length)
             self.assertEqual(actual, expected)
 
 
